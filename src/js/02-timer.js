@@ -9,6 +9,7 @@ const refs = {
   hoursEl: document.querySelector('[data-hours]'),
   minutesEl: document.querySelector('[data-minutes]'),
   secondsEl: document.querySelector('[data-seconds]'),
+  timeEndEl: document.querySelector('.time-end'),
 };
 let intervalId = null;
 let isActive = false;
@@ -51,6 +52,7 @@ function onBtnClick() {
     const deltaTime = futureTimeGlobal.getTime() - Date.now();
     if (deltaTime <= 0) {
       clearInterval(intervalId);
+      refs.timeEndEl.textContent = 'Time is over!!! :)';
       return;
     }
     renderTextContent(deltaTime);

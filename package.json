@@ -15,7 +15,7 @@
   "author": "Oleksii Rozhnenko <qwimik@gmail.com>",
   "license": "",
   "bugs": {
-    "url": ""
+    "url": "https://github.com/qwimik/goit-js-hw-09/issues"
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"

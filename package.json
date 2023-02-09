@@ -2,20 +2,20 @@
   "name": "parcel-project-template",
   "version": "2.0.0",
   "description": "",
-  "homepage": "https://Qwimik.github.io/goit-js-hw-09/",
+  "homepage": "https://Qwimik.github.io/goit-js-hw-09",
   "scripts": {
     "start": "parcel src/*.html",
     "build": "parcel build src/*.html --public-url /goit-js-hw-09/"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/qwimik/goit-js-hw-09.git"
+    "url": ""
   },
   "keywords": [],
   "author": "Oleksii Rozhnenko <qwimik@gmail.com>",
-  "license": "ISC",
+  "license": "",
   "bugs": {
-    "url": "https://github.com/goitacademy/parcel-project-template/issues"
+    "url": ""
   },
   "dependencies": {
     "modern-normalize": "^1.1.0"

@@ -12,8 +12,14 @@ refs.form.addEventListener('submit', e => {
 
   let delayPromise = Number(refs.delayEl.value);
 
-  for (let i = 1; i <= refs.amountEl.value; i += 1) {
-    createPromise(i, delayPromise);
+  for (let i = 1; i <= Number(refs.amountEl.value); i += 1) {
+    createPromise(i, delayPromise)
+      .then(({ position, delay }) =>
+        Notify.success(`Fullfilled promise ${position} in ${delay}ms`)
+      )
+      .catch(({ position, delay }) =>
+        Notify.failure(`Rejected promise ${position} in ${delay}ms`)
+      );
     delayPromise += Number(refs.stepEl.value);
   }
 });
@@ -24,9 +30,9 @@ function createPromise(position, delay) {
 
     setTimeout(() => {
       if (shouldResolve) {
-        resolve(Notify.success(`Fullfilled promise ${position} in ${delay}ms`));
+        resolve({ position, delay });
       } else {
-        reject(Notify.failure(`Rejected promise ${position} in ${delay}ms`));
+        reject({ position, delay });
       }
     }, delay);
   });

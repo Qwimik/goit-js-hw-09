@@ -2,25 +2,23 @@ import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
   form: document.querySelector('.form'),
-  delayEl: document.querySelector('[name="delay"]'),
-  stepEl: document.querySelector('[name="step"]'),
-  amountEl: document.querySelector('[name="amount"]'),
 };
 
 refs.form.addEventListener('submit', e => {
   e.preventDefault();
+  const amount = Number(e.currentTarget.elements.amount.value);
+  const step = Number(e.currentTarget.elements.step.value);
+  let delay = Number(e.currentTarget.elements.delay.value);
 
-  let delayPromise = Number(refs.delayEl.value);
-
-  for (let i = 1; i <= Number(refs.amountEl.value); i += 1) {
-    createPromise(i, delayPromise)
+  for (let i = 1; i <= amount; i += 1) {
+    createPromise(i, delay)
       .then(({ position, delay }) =>
         Notify.success(`Fullfilled promise ${position} in ${delay}ms`)
       )
       .catch(({ position, delay }) =>
         Notify.failure(`Rejected promise ${position} in ${delay}ms`)
       );
-    delayPromise += Number(refs.stepEl.value);
+    delay += step;
   }
 });
 

@@ -14,7 +14,7 @@ const refs = {
 let intervalId = null;
 let isActive = false;
 let futureTimeGlobal = null;
-refs.startBtn.setAttribute('disabled', true);
+refs.startBtn.setAttribute('disabled', 'true');
 
 const options = {
   enableTime: true,
@@ -44,15 +44,20 @@ function setTimer(currentDate, futureDate) {
 refs.startBtn.addEventListener('click', onBtnClick);
 
 function onBtnClick() {
-  if (isActive) {
-    return;
-  }
-  isActive = true;
+  // if (isActive) {
+  //   return;
+  // }
+  // isActive = true;
+  refs.timeEndEl.textContent = '';
+  refs.input.setAttribute('disabled', 'true');
+  refs.startBtn.setAttribute('disabled', 'true');
   intervalId = setInterval(() => {
     const deltaTime = futureTimeGlobal.getTime() - Date.now();
     if (deltaTime <= 0) {
       clearInterval(intervalId);
       refs.timeEndEl.textContent = 'Time is over!!! :)';
+      refs.input.removeAttribute('disabled');
+      refs.startBtn.removeAttribute('disabled');
       return;
     }
     renderTextContent(deltaTime);
